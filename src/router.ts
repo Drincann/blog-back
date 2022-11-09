@@ -1,3 +1,4 @@
+import 'koa-body'
 import KoaRouter from 'koa-router'
 import * as apis from './api'
 export const v1Router = new KoaRouter()
