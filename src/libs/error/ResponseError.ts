@@ -1,8 +1,6 @@
 import { rawErrors } from "./errors"
+import { tmplReplace } from "./helper/tmplReplace"
 
-const tmplReplace = (tmpl: string, data: any) => {
-  return tmpl.replace(/\$\{(\w+)\}/g, (_, key) => data[key])
-}
 
 interface ResponseErrorDetail {
   [key: string]: any
