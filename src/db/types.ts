@@ -1,9 +1,4 @@
-export interface labels {
-  name: string
-  count: number // default 0
-}
-
-export interface article {
+export interface Article {
   type: 'card' | 'normal' // default normal
   labels: string[]
 
