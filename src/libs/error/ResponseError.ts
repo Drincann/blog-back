@@ -1,4 +1,4 @@
-import { rawErrors } from "./errors"
+import { errorTypes } from "./errors"
 import { tmplReplace } from "./helper/tmplReplace"
 
 
@@ -9,24 +9,22 @@ interface ResponseErrorDetail {
 
 export class ResponseError extends Error {
   constructor(
-    public type: typeof rawErrors[keyof typeof rawErrors]['type'],
-    public message: string,
-    public code: number,
+    private errorType: typeof errorTypes[keyof typeof errorTypes],
     public detail?: ResponseErrorDetail,
   ) {
+    let { message, type, code } = errorType
     message = tmplReplace(message, { type, message, code, ...detail })
     super(message)
-    // trace stack
-    Error.captureStackTrace(this, ResponseError)
+    Error.captureStackTrace(this, ResponseError.create)
   }
 
-  public static create(raw: typeof rawErrors[keyof typeof rawErrors], detail?: ResponseErrorDetail) {
-    return new ResponseError(raw.type, raw.message, raw.code, detail)
+  public static create(errorType: typeof errorTypes[keyof typeof errorTypes], detail?: ResponseErrorDetail) {
+    return new ResponseError(errorType, detail)
   }
 
   public valueOf() {
     return {
-      code: this.code,
+      code: this.errorType.code,
       message: this.message,
       detail: this.detail,
     }

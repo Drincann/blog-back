@@ -1,7 +1,7 @@
-export const rawErrors = {
+export const errorTypes = {
   'default': {
     type: 'default',
-    code: -1, message: 'default error',
+    code: -1, message: 'default error: ${message}',
   },
   'article-not-found': {
     type: 'article-not-found',
