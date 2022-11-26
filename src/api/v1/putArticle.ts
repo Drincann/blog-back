@@ -9,20 +9,16 @@ export const putArticle = async ({
   createAt, updateAt,
   // comments,
 }: Partial<Article & { _id: string }>) => {
+  if (typeof _id !== 'string') throw ResponseError.create(errorTypes['param-error'], { params: '_id' })
   const objId = new ObjectId(_id)
-  if (typeof _id === 'string') {
-    var article = await articleColl.findOne({ _id: objId })
-    if (article === null) throw ResponseError.create(errorTypes['article-not-found'])
-  }
-
+  const article = await articleColl.findOne({ _id: objId })
+  if (article === null) throw ResponseError.create(errorTypes['article-not-found'])
   const updater = {
     type,
     title, content,
-    createAt, updateAt,
+    createAt: createAt, updateAt: updateAt ?? new Date(),
   }
   const { acknowledged } = await articleColl.updateOne({ _id: objId }, { $set: updater, })
-  for (const key of Object.keys(updater)) {
-    (article as WithId<Article>)[key] = updater[key]
-  }
-  return article
+  if (acknowledged) return await articleColl.findOne({ _id: objId })
+  else throw { message: 'update failed' }
 }
