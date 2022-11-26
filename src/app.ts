@@ -1,7 +1,7 @@
 import Koa from 'koa'
 import koaBody from 'koa-body'
 import { v1Router } from './router'
-import config from './config/config'
+import config from './config'
 import { getMongoStatus } from './db'
 export const app = new Koa
 
