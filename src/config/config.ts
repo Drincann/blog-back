@@ -7,6 +7,7 @@ export default {
     dbName: 'blog',
   },
   dynamicSecret: 'blog',
+  expireTime: '30d',
 } as {
   port: number
   host: string | undefined
@@ -16,4 +17,5 @@ export default {
     dbName: string
   },
   dynamicSecret: string,
+  expireTime: string,
 }
