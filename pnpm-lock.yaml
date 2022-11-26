@@ -4,6 +4,7 @@ specifiers:
   '@types/koa': ^2.13.5
   '@types/koa-router': ^7.4.4
   '@types/node': ^18.11.9
+  jose: ^4.11.1
   koa: ^2.13.4
   koa-body: ^6.0.1
   koa-router: ^12.0.0
@@ -13,6 +14,7 @@ specifiers:
   typescript: ^4.8.4
 
 dependencies:
+  jose: 4.11.1
   koa-body: 6.0.1
   mongodb: 4.11.0
 
@@ -1357,6 +1359,10 @@ packages:
     resolution: {integrity: sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==}
     engines: {node: '>=0.12.0'}
     dev: true
+
+  /jose/4.11.1:
+    resolution: {integrity: sha512-YRv4Tk/Wlug8qicwqFNFVEZSdbROCHRAC6qu/i0dyNKr5JQdoa2pIGoS04lLO/jXQX7Z9omoNewYIVIxqZBd9Q==}
+    dev: false
 
   /keygrip/1.1.0:
     resolution: {integrity: sha512-iYSchDJ+liQ8iwbSI2QqsQOvqv58eJCEanyJPJi+Khyu8smkcKSFUCbPwzFcL7YVtZ6eONjqRX/38caJ7QjRAQ==}
