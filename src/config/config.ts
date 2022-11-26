@@ -3,7 +3,7 @@ export default {
   host: undefined, // default 127.0.0.1
   env: 'dev',
   db: {
-    connStr: 'mongodb://127.0.0.1:27017',
+    connStr: 'mongodb+srv://<user>:<password>@<cluster-url>?retryWrites=true&w=majority',
     dbName: 'blog',
   },
   dynamicSecret: 'blog',
