@@ -1,5 +1,5 @@
 export interface Article {
-  type: 'card' | 'normal' // default normal
+  type: 'card' | 'normal' | 'about' // default normal
   labels: string[]
 
   title: string
