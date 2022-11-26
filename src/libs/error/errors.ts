@@ -19,4 +19,8 @@ export const errorTypes = {
     type: 'auth-error',
     code: 4, message: 'invalid token ${token}',
   },
+  'auth-error': {
+    type: 'auth-error',
+    code: 5, message: 'auth error: ${message}',
+  },
 }
