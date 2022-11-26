@@ -1,8 +1,9 @@
 import { articleColl } from "../../db/client"
 import { Article } from "../../db/types"
-import { ObjectId, WithId } from 'mongodb'
+import { ObjectId } from 'mongodb'
 import { errorTypes, ResponseError } from "../../libs/error"
-export const putArticle = async ({
+import { requireManager } from "./decorator/requireManager"
+export const putArticle = requireManager(async ({
   _id,
   type, // labels,
   title, content,
@@ -21,4 +22,4 @@ export const putArticle = async ({
   const { acknowledged } = await articleColl.updateOne({ _id: objId }, { $set: updater, })
   if (acknowledged) return await articleColl.findOne({ _id: objId })
   else throw { message: 'update failed' }
-}
+})

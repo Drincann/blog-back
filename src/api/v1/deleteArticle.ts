@@ -1,8 +1,9 @@
 import { ObjectId } from "mongodb"
 import { articleColl } from "../../db"
 import { errorTypes, ResponseError } from "../../libs/error"
+import { requireManager } from "./decorator/requireManager"
 
-export const deleteArticle = async ({ _id }: { _id: string }) => {
+export const deleteArticle = requireManager(async ({ _id }: { _id: string }) => {
   if (typeof _id !== 'string') throw ResponseError.create(errorTypes['param-error'], { params: '_id' })
   const objId = new ObjectId(_id)
   const article = await articleColl.findOne({ _id: objId })
@@ -10,4 +11,4 @@ export const deleteArticle = async ({ _id }: { _id: string }) => {
   const { acknowledged } = await articleColl.deleteOne({ _id: objId })
   if (acknowledged) return { _id }
   else throw { message: 'delete failed' }
-}
+})
