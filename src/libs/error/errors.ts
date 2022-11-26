@@ -11,4 +11,8 @@ export const errorTypes = {
     type: 'api-not-found',
     code: 2, message: 'api not found: ${apiName}',
   },
+  'param-error': {
+    type: 'param-error',
+    code: 3, message: 'param error: ${params}',
+  },
 }
