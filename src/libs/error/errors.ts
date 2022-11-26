@@ -5,7 +5,7 @@ export const errorTypes = {
   },
   'article-not-found': {
     type: 'article-not-found',
-    code: 1, message: 'article not found',
+    code: 1, message: 'article not found ${data}',
   },
   'api-not-found': {
     type: 'api-not-found',
