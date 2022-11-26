@@ -23,7 +23,7 @@ export const sign = async <T>(payload: T, exp?: string): Promise<string> => {
     .setIssuedAt()
     .setIssuer('blog-back')
     .setAudience('manager')
-    .setExpirationTime(exp ?? '2h')
+    .setExpirationTime(exp ?? '30d')
     .sign(await getPrivate())
 }
 
