@@ -1,5 +1,7 @@
 import Koa from 'koa'
 import koaBody from 'koa-body'
+import koaStatic from 'koa-static'
+import path from 'path'
 import { v1Router } from './router'
 import config from './config'
 import { getMongoStatus } from './db'
@@ -17,6 +19,9 @@ app.use(async (ctx, next) => {
     ` -> ${JSON.stringify(ctx.body)}\n`
   )
 })
+
+// Handle static
+app.use(koaStatic(path.resolve(__dirname, '../public')))
 
 // Handle api
 app.use(v1Router.middleware())
