@@ -9,7 +9,7 @@ export const app = new Koa
 app.use(koaBody({ jsonLimit: '20mb' }))
 
 // Log request-response
-if (config.env === 'dev') app.use(async (ctx, next) => {
+app.use(async (ctx, next) => {
   const now = Date.now()
   await next()
   console.log(new Date().toLocaleString() + `> ${ctx.path} -- ${Date.now() - now} ms\n` +
