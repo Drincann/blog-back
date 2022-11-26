@@ -15,4 +15,8 @@ export const errorTypes = {
     type: 'param-error',
     code: 3, message: 'param error: ${params}',
   },
+  'auth-error': {
+    type: 'auth-error',
+    code: 4, message: 'forbidden',
+  },
 }
