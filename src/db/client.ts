@@ -6,7 +6,7 @@ export const mongoClient = new MongoClient(config.db.connStr)
 
 export const db = mongoClient.db(config.db.dbName)
 
-export const articleColl = db.collection<Article>('article')
+export const articleColl = db.collection<Partial<Article>>('article')
 
 export interface MongoStatus { status: 'connecting' | 'connected' | 'error', detail: string }
 export const getMongoStatus = ((): () => MongoStatus => {
