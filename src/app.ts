@@ -21,7 +21,8 @@ app.use(async (ctx, next) => {
 })
 
 // Handle static
-app.use(koaStatic(path.resolve(__dirname, '../public')))
+app.use(koaStatic(path.resolve(__dirname, '../public/index.html'))) // no cache
+app.use(koaStatic(path.resolve(__dirname, '../public'), { maxage: 1000 * 60 * 60 * 24 * 30 })) // cache 30 days
 
 // Handle api
 app.use(v1Router.middleware())
