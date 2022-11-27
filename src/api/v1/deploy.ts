@@ -11,6 +11,9 @@ export const deploy = requireManager(async ({ bundle }: { bundle: string }) => {
     if (isWorking) throw ResponseError.create(errorTypes['deploying'])
     isWorking = true
     if (typeof bundle !== 'string') throw ResponseError.create(errorTypes['param-error'], { params: 'bundle is not a valid base64 string' })
+    if (!existsSync(path.resolve(__dirname, '../../../versions'))) {
+      await mkdir(path.resolve(__dirname, '../../../versions'))
+    }
     const bundlePath = path.resolve(__dirname, '../../../versions', `bundle${Date.now()}.tar.gz`)
     try {
       await writeFile(bundlePath, Buffer.from(bundle, 'base64'))
