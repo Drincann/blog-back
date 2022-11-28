@@ -16,8 +16,8 @@ app.use(async (ctx, next) => {
   const now = Date.now()
   await next()
   console.log(new Date().toLocaleString() + `> ${ctx.path} -- ${Date.now() - now} ms\n` +
-    ` <- ${JSON.stringify(ctx.request.body)}\n` +
-    ` -> ${JSON.stringify(ctx.body)}\n`
+    ` <- ${JSON.stringify(ctx.request.body)}\n` //+
+    // ` -> ${JSON.stringify(ctx.body)}\n`
   )
 })
 
