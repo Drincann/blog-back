@@ -5,6 +5,7 @@ import path from 'path'
 import { v1Router } from './router'
 import config from './config'
 import { getMongoStatus } from './db'
+import { setETag } from './middleware/setETag'
 export const app = new Koa
 
 // Body parser
@@ -23,6 +24,9 @@ app.use(async (ctx, next) => {
 // Handle static
 app.use(koaStatic(path.resolve(__dirname, '../public/index.html'))) // no cache
 app.use(koaStatic(path.resolve(__dirname, '../public'), { maxage: 1000 * 60 * 60 * 24 * 30 })) // cache 30 days
+
+// ETag
+app.use(setETag)
 
 // Handle api
 app.use(v1Router.middleware())
