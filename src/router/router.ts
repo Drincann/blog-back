@@ -20,7 +20,7 @@ v1Router.post('/api/v1/:apiName', async ctx => {
       if (!(error instanceof ResponseError)) {
         error = typeof error === 'object' ? error : { message: error }
         errorVal = ResponseError.create(errorTypes.default, { ...(error as any) }).valueOf()
-        logger.error('error', errorVal)
+        logger.error('error', errorVal, error)
       } else {
         errorVal = error.valueOf()
       }
